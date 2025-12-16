@@ -18,4 +18,11 @@ c.execute("""CREATE TABLE articles (
     url TEXT UNIQUE,
     author TEXT
 )""")
+
+c.execute("""CREATE TABLE stocks (
+    ticker TEXT,
+    company_name TEXT,      
+)  
+""")
+
 conn.commit()
