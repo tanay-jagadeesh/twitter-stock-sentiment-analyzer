@@ -34,4 +34,22 @@ def extract_news():
 
 extract_news()
 
-stocks_in_demand = ["APPL", "GOOGL", "MSFT", "TSLA", "META", "NVDA", "AMZN", "JPM", "BAC", "GS", "V", "WMT", "JNJ", "UNH", "DIS"]
+stocks_in_demand = ["AAPL", "GOOGL", "MSFT", "TSLA", "META", "NVDA", "AMZN", "JPM", "BAC", "GS", "V", "WMT", "JNJ", "UNH", "DIS"]
+
+ticker_symbols = {
+    "AAPL": "Apple",
+    "GOOGL": "Google",
+    "MSFT": "Microsoft",
+    "TSLA": "Tesla",
+    "META": "Meta OR Facebook",
+    "NVDA": "Nvidia",
+    "AMZN": "Amazon",
+    "JPM": "JPMorgan OR JP Morgan",
+    "BAC": "Bank of America",
+    "GS": "Goldman Sachs",
+    "V": "Visa",
+    "WMT": "Walmart",
+    "JNJ": "Johnson & Johnson",
+    "UNH": "UnitedHealth OR United Health",
+    "DIS": "Disney"
+}
