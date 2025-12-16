@@ -3,7 +3,7 @@
 ## What it does
 Scrapes r/wallstreetbets, analyzes sentiment around stocks, correlates with price movements
 
-## Data Science concepts covered
+## Data Science concepts
 - Natural Language Processing (NLP)
 - Sentiment analysis (VADER or transformers)
 - Time series analysis
@@ -27,12 +27,6 @@ Scrapes r/wallstreetbets, analyzes sentiment around stocks, correlates with pric
 - [ ] Extract: post title, body, score, comments, timestamp
 - [ ] Save to CSV
 - [ ] Commit to GitHub
-
-## Getting Started
-1. Clone this repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Set up Reddit API credentials
-4. Run the scraper: `python reddit_scraper.py`
 
 ## Author
 tanay-jagadeesh
