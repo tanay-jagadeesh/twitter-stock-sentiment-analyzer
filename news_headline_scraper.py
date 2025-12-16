@@ -3,15 +3,27 @@
 import pandas as pd
 from datetime import datetime
 import requests
-import os
-from dotenv import load_dotenv
 import config 
 
 response = requests.get(f"https://newsapi.org/v2/everything?q=Apple&apiKey={config.API_KEY}")
 
 try:
     response.raise_for_status()
+    print(response.json())
 except requests.exceptions.HTTPError as e:
     print(f"HTTP error: {e}")
 
-print(response.json())
+def extract_news():
+    article_list = []
+    for article in response.json()['articles']:
+        data = {
+            "source": article['source'],
+            "title": article['title'],
+            "author": article['author'],
+            "description": article['description'],
+            "url": article['url'],
+            "publishedAt": article['publishedAt'],
+            "content": article['content']
+        }
+        article_list.append(data)
+    return article_list
