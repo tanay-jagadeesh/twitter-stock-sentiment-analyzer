@@ -5,6 +5,9 @@ import pandas as pd
 #Loading CSV file into a pandas DF
 df = pd.read_csv('news_data.csv')
 
+#Cleaning Data
+df.columns = df.columns.str.strip()
+
 conn = sqlite3.connect('news.sentiment.db')
 
 #Create a cursor
