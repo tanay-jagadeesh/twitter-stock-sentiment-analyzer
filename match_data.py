@@ -33,6 +33,12 @@ stocks_df = pd.read_sql_query("SELECT * FROM stock_prices", conn2)
 articles_df['date'] = articles_df['published_at'].str[:10]  
 stocks_df['date'] = stocks_df['date'].str[:10]  
 
+# Now merge them by ticker AND date
+merged_df = articles_df.merge(stocks_df, on=['ticker', 'date'], how='inner')
+
+# See what you got
+print(f"Found {len(merged_df)} matches!")
+print(merged_df.head())
 
 
 
