@@ -15,7 +15,7 @@ c = conn.cursor()
 
 #Create an article table
 # language=sql
-c.execute("""CREATE TABLE articles (
+c.execute("""CREATE TABLE IF NOT EXISTS articles (
     article_id INTEGER PRIMARY KEY AUTOINCREMENT,
     ticker TEXT,
     title TEXT,
@@ -28,7 +28,7 @@ c.execute("""CREATE TABLE articles (
 )""")
 
 #create a stocks table
-c.execute("""CREATE TABLE stocks (
+c.execute("""CREATE TABLE IF NOT EXISTS stocks (
     ticker TEXT PRIMARY KEY,
     company_name TEXT  
 )  
@@ -52,4 +52,5 @@ for i, row in df.iterrows():
         print(f"Skipping duplicate article: {row['url']}")
         continue
 
+conn.commit()
 conn.close()
