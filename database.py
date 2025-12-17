@@ -1,4 +1,9 @@
 import sqlite3
+import pandas as pd
+
+
+#Loading CSV file into a pandas DF
+df = pd.read_csv('news_data.csv')
 
 conn = sqlite3.connect('news.sentiment.db')
 
