@@ -69,6 +69,8 @@ daily_stats = daily_stats.reset_index()
 print("\nMaster dataset:")
 print(daily_stats.head())
 
+daily_stats['next_day_change'] = (daily_stats.groupby('ticker')['close_price'].shift(-1)- daily_stats['close_price']) / daily_stats['close_price'] * 100
+
 conn.commit()
 
 conn.close()
