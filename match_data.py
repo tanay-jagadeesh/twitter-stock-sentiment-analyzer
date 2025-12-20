@@ -92,6 +92,8 @@ daily_stats.to_csv('daily_stats.csv', index=False)
 
 print(f"\nSaved {len(daily_stats)} rows to daily_stats.csv")
 
+#NLP BASICS WITH VADER
+
 conn.commit()
 
 conn.close()
