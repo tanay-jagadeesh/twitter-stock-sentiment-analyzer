@@ -12,7 +12,7 @@ articles_df = pd.read_sql_query("SELECT * FROM articles", conn)
 
 
 analyzer = SentimentIntensityAnalyzer()
-articles_df['combined_scores'] = (articles_df['title'] + ' ' + articles_df['description']).apply(cleaned)
+articles_df['combined_scores'] = (articles_df['title'].fillna('') + ' ' + articles_df['description'].fillna('')).apply(cleaned)
 
 def get_sentiments(txt):
     scores = analyzer.polarity_scores(txt)
