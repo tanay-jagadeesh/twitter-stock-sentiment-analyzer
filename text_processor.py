@@ -12,3 +12,7 @@ def remove_special_characters(s):
 def lowercase(txt):
     lower = txt.lower()
     return lower
+
+def remove_whitespace(txt):
+    cleaned = txt.strip()
+    return cleaned
