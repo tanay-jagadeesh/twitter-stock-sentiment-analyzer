@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd 
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 conn = sqlite3.connect('news.sentiment.db')
 conn2 = sqlite3.connect('stock_value.db')
@@ -93,6 +94,8 @@ daily_stats.to_csv('daily_stats.csv', index=False)
 print(f"\nSaved {len(daily_stats)} rows to daily_stats.csv")
 
 #NLP BASICS WITH VADER
+
+
 
 conn.commit()
 
