@@ -94,7 +94,10 @@ daily_stats.to_csv('daily_stats.csv', index=False)
 print(f"\nSaved {len(daily_stats)} rows to daily_stats.csv")
 
 #NLP BASICS WITH VADER
-
+analyzer = SentimentIntensityAnalyzer()
+headline = "Apple stock surges to record high on strong earnings"
+scores = analyzer.polarity_scores(headline)
+print(scores)
 
 
 conn.commit()
