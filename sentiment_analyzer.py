@@ -23,3 +23,6 @@ articles_df['vader_sentiment'] = articles_df['combined_scores'].apply(get_sentim
 print(f"Sentiment Scores: {articles_df['vader_sentiment']}")
 
 articles_df['neg'] = articles_df['vader_sentiment'].apply(lambda x: x['neg'])
+
+articles_df['neu'] = articles_df['vader_sentiment'].apply(lambda x: x['neu'])
+
