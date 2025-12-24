@@ -37,3 +37,13 @@ articles_df['date'] = articles_df['published_at'].str[:10]
 # Start with daily_stats as our base
 features = daily_stats.copy()
 features = features.sort_values(['ticker', 'date']).reset_index(drop=True)
+
+# Sentiment features
+daily_sentiment = articles_df.groupby(['ticker', 'date'])['compound'].mean().reset_index(name='sentiment')
+features = features.merge(daily_sentiment, on=['ticker', 'date'], how='left')
+
+# Lagged sentiment
+features['sentiment_lag1'] = features.groupby('ticker')['sentiment'].shift(1)
+features['sentiment_3day'] = features.groupby('ticker')['sentiment'].transform(lambda x: x.rolling(3, min_periods=1).mean())
+features['sentiment_7day'] = features.groupby('ticker')['sentiment'].transform(lambda x: x.rolling(7, min_periods=1).mean())
+features['sentiment_momentum'] = features.groupby('ticker')['sentiment'].transform(lambda x: x - x.shift(3))
