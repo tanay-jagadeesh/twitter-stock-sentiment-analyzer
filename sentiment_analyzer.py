@@ -3,6 +3,7 @@ import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from text_processor import remove_url, remove_special_characters, lowercase, remove_whitespace
 from match_data import cleaned
+import matplotlib.pyplot as plt
 
 # Connect to database
 conn = sqlite3.connect('news.sentiment.db')
