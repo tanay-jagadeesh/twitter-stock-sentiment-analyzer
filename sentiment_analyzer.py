@@ -106,3 +106,7 @@ plt.ylabel('Value')
 plt.title('Sentiment vs. Price for AAPL')
 plt.legend()
 plt.show()
+
+volatility = articles_df.groupby('ticker')['compound'].std()
+
+print(f"The stocks with the most volatility are {volatility.sort(ascending = False)}")
