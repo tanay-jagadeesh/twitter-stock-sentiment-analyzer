@@ -116,3 +116,8 @@ for ticker in features_scaled['ticker'].unique():
     features_scaled.loc[ticker_mask, features_to_scale] = scaler.fit_transform(
         features_scaled.loc[ticker_mask, features_to_scale]
     )
+
+# Save
+features.to_csv('features_unscaled.csv', index=False)
+features_scaled.to_csv('features_scaled.csv', index=False)
+print(f"Saved {features.shape[0]} rows, {features.shape[1]} columns")
