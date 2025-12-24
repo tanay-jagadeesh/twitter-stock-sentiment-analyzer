@@ -47,3 +47,8 @@ features['sentiment_lag1'] = features.groupby('ticker')['sentiment'].shift(1)
 features['sentiment_3day'] = features.groupby('ticker')['sentiment'].transform(lambda x: x.rolling(3, min_periods=1).mean())
 features['sentiment_7day'] = features.groupby('ticker')['sentiment'].transform(lambda x: x.rolling(7, min_periods=1).mean())
 features['sentiment_momentum'] = features.groupby('ticker')['sentiment'].transform(lambda x: x - x.shift(3))
+
+# Article volume features
+features['article_7day_avg'] = features.groupby('ticker')['article_count'].transform(lambda x: x.rolling(7, min_periods=1).mean())
+features['article_volume_spike'] = features['article_count'] / (features['article_7day_avg'] + 1)
+features['source_diversity'] = features['source_count']
