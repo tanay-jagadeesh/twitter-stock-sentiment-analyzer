@@ -140,3 +140,18 @@ combined_data = combined_data.merge(daily_sentiment_avg, on=['ticker', 'date'], 
 # Calculate correlation
 sentiment_corr = combined_data['avg_sentiment'].corr(combined_data['next_day_change'])
 print(f"Correlation between sentiment score and next-day price change: {sentiment_corr}")
+
+# 3. Bullish % to price movement
+# Count bullish articles per day
+bullish_counts = articles_df[articles_df['classify'] == 'bullish'].groupby(['ticker', 'date']).size().reset_index(name='bullish_count')
+
+# Merge with combined_data to get total article count
+combined_data = combined_data.merge(bullish_counts, on=['ticker', 'date'], how='left')
+combined_data['bullish_count'] = combined_data['bullish_count'].fillna(0)
+
+# Calculate bullish percentage
+combined_data['bullish_pct'] = (combined_data['bullish_count'] / combined_data['article_count']).fillna(0)
+
+# Calculate correlation
+bullish_corr = combined_data['bullish_pct'].corr(combined_data['next_day_change'])
+print(f"Correlation between bullish % and next-day price change: {bullish_corr}")
