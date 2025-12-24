@@ -117,3 +117,4 @@ for ticker in features_scaled['ticker'].unique():
 features.to_csv('features_unscaled.csv', index=False)
 features_scaled.to_csv('features_scaled.csv', index=False)
 print(f"Saved {features.shape[0]} rows, {features.shape[1]} columns")
+
