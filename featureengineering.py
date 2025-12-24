@@ -63,3 +63,20 @@ bearish_counts = articles_df[articles_df['classify'] == 'bearish'].groupby(['tic
 features = features.merge(bearish_counts, on=['ticker', 'date'], how='left')
 features['bearish_count'] = features['bearish_count'].fillna(0)
 features['bearish_pct'] = (features['bearish_count'] / (features['article_count'] + 1))
+
+# Price features
+features['price_ma5'] = features.groupby('ticker')['close_price'].transform(lambda x: x.rolling(5, min_periods=1).mean())
+features['price_ma10'] = features.groupby('ticker')['close_price'].transform(lambda x: x.rolling(10, min_periods=1).mean())
+features['price_ma20'] = features.groupby('ticker')['close_price'].transform(lambda x: x.rolling(20, min_periods=1).mean())
+features['price_volatility'] = features.groupby('ticker')['close_price'].transform(lambda x: x.rolling(5, min_periods=1).std())
+
+def calculate_rsi(prices, period=14):
+    delta = prices.diff()
+    gain = (delta.where(delta > 0, 0)).rolling(window=period, min_periods=1).mean()
+    loss = (-delta.where(delta < 0, 0)).rolling(window=period, min_periods=1).mean()
+    rs = gain / (loss + 1e-10)
+    rsi = 100 - (100 / (1 + rs))
+    return rsi
+
+features['rsi'] = features.groupby('ticker')['close_price'].transform(lambda x: calculate_rsi(x))
+features['price_momentum'] = features.groupby('ticker')['close_price'].pct_change(periods=3)
