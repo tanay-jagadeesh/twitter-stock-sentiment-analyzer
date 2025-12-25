@@ -197,3 +197,7 @@ for train_index, val_index in (tscv.split(X_train)):
     model_predictions = model.predict(X_val_fold)
     score = r2_score(y_val_fold, model_predictions)
     print(f"XGB Fold score: {score}")
+
+# want to see which performs the best 
+best_model = comparison_df.loc[comparison_df['R²'].idxmax(), 'Model']
+print(f"\nOverall Best Model: {best_model}")
