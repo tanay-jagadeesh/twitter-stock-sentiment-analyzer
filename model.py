@@ -1,9 +1,9 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier, GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error, root_mean_squared_error, r2_score, mean_absolute_error
-from sklearn.ensemble import RandomForestClassifier
+
 
 # Load train/val/test sets
 X_train = pd.read_csv('X_train.csv')
@@ -105,3 +105,9 @@ comparison_df.to_csv('model_comparison.csv', index=False)
 rfc = RandomForestClassifier()
 rfc.fit(X_train, y_train)
 rfc_predictions = rfc.predict(X_val)
+
+#Gradient Boosting model
+
+gbc = GradientBoostingRegressor()
+gbc.fit(X_train, y_train)
+gbc_predictions = gbc.predict(X_val)
