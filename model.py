@@ -161,3 +161,16 @@ for train_index, val_index in (tscv.split(X_train)):
     model.fit(X_train_fold, y_train_fold)
 
     model_predictions = model.predict(X_val_fold)
+
+#Gradient Boosting Regressor
+for train_index, val_index in (tscv.split(X_train)):
+    X_train_fold = X_train.iloc[train_index]
+    y_train_fold = y_train.iloc[train_index]
+    X_val_fold = X_train.iloc[val_index]
+    y_val_fold = y_train.iloc[val_index]
+
+    model = GradientBoostingRegressor()
+
+    model.fit(X_train_fold, y_train_fold)
+
+    model_predictions = model.predict(X_val_fold)
