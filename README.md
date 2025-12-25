@@ -18,7 +18,12 @@ Collects financial news articles for major stocks, analyzes sentiment using NLP,
 - Machine learning models for price prediction
 - Interactive dashboard for visualization
 
+## Results
 - <img width="1001" height="601" alt="image" src="https://github.com/user-attachments/assets/103208c8-986b-4c8b-b73b-b134ca2aa8ab" />
+
+<img width="1002" height="602" alt="image" src="https://github.com/user-attachments/assets/4e1fe72b-d250-451c-9a5a-db8d27f911e1" />
+
+<img width="1004" height="603" alt="image" src="https://github.com/user-attachments/assets/b8083ab0-5a90-4448-9f94-06ac0ce63073" />
 
 ## Author
 tanay-jagadeesh
