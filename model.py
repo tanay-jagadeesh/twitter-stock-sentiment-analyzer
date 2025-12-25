@@ -3,6 +3,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier, GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error, root_mean_squared_error, r2_score, mean_absolute_error
+from sklearn.model_selection import TimeSeriesSplit
 from xgboost import XGBRegressor
 
 # Load train/val/test sets
@@ -117,3 +118,13 @@ gbc_predictions = gbc.predict(X_val)
 xgb_model = XGBRegressor()
 xgb_model.fit(X_train, y_train)
 xgb_predictions = xgb_model.predict(X_val)
+
+#Time Series Split (cross val.)
+
+tscv = TimeSeriesSplit(n_splits = 5)
+
+for train_index, val_index in (tscv.split(X_train)):
+    X_train_fold = X_train.iloc[train_index]
+    y_train_fold = y_train.iloc[train_index]
+    X_val_fold = X_val.iloc[val_index]
+    y_val_fold = y_val.iloc[val_index]
