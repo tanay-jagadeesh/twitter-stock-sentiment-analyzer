@@ -38,4 +38,5 @@ mean_squared_error(y_val, reg_model_predictions)
 #Mean Squared Error for decision tree
 mean_squared_error(y_val, dt_predictions)
 
-
+#Mean Squared Error for random forest 
+mean_squared_error(y_val, rf_predictions)
