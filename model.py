@@ -79,3 +79,24 @@ print(f"Decision Tree MAE: {dt_mae}")
 #MAE for random forest
 rf_mae = mean_absolute_error(y_val, rf_predictions)
 print(f"Random Forest MAE: {rf_mae}")
+
+# comparing models and seeing which performed well
+comparison_df = pd.DataFrame({
+    'Model': ['Linear Regression', 'Decision Tree', 'Random Forest'],
+    'MSE': [lr_mse, dt_mse, rf_mse],
+    'RMSE': [lr_rmse, dt_rmse, rf_rmse],
+    'R²': [lr_r2, dt_r2, rf_r2],
+    'MAE': [lr_mae, dt_mae, rf_mae]
+})
+
+# searching best model
+print("\nBest Models by Metric:")
+print(f"  Lowest MSE: {comparison_df.loc[comparison_df['MSE'].idxmin(), 'Model']}")
+print(f"  Lowest RMSE: {comparison_df.loc[comparison_df['RMSE'].idxmin(), 'Model']}")
+print(f"  Highest R²: {comparison_df.loc[comparison_df['R²'].idxmax(), 'Model']}")
+print(f"  Lowest MAE: {comparison_df.loc[comparison_df['MAE'].idxmin(), 'Model']}")
+
+# saved results to csv file
+comparison_df.to_csv('model_comparison.csv', index=False)
+
+
