@@ -32,6 +32,10 @@ rf_model = RandomForestRegressor()
 rf_model.fit(X_train, y_train)
 rf_predictions = rf_model.predict(X_val)
 
-#Mean Squared Errorn for Lin Reg
+#Mean Squared Error for Lin Reg
 mean_squared_error(y_val, reg_model_predictions)
+
+#Mean Squared Error for decision tree
+mean_squared_error(y_val, dt_predictions)
+
 
