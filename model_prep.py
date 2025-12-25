@@ -40,3 +40,16 @@ Y_val = matrix_y[train_end:val_end]
 #final 15%
 Y_test = matrix_y[val_end:]
 
+# Save train/val/test sets
+X_train.to_csv('X_train.csv', index=False)
+X_val.to_csv('X_val.csv', index=False)
+X_test.to_csv('X_test.csv', index=False)
+
+Y_train.to_csv('y_train.csv', index=False)
+Y_val.to_csv('y_val.csv', index=False)
+Y_test.to_csv('y_test.csv', index=False)
+
+print(f"Saved train/val/test splits:")
+print(f"Train: {len(X_train)} rows")
+print(f"Val: {len(X_val)} rows")
+print(f"Test: {len(X_test)} rows")
